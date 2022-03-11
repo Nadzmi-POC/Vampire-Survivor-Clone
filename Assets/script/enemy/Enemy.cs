@@ -6,15 +6,12 @@ using System;
 public class Enemy : MonoBehaviour
 {
     public Stat stat;
-
-    private HPController hpController;
+    public HPController hpController;
 
     public Stat GetStat() => stat;
 
     private void Start()
     {
-        hpController = GetComponent<HPController>();
-
         if (stat == null)
         {
             LogHelper.ShowErrorLog(this.name, "Property 'stat' must have a value.");
