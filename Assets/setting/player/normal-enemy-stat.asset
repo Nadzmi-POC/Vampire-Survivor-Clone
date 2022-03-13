@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: normal-enemy-stat
   m_EditorClassIdentifier: 
   hp: 100
-  moveSpeed: 10
+  moveSpeed: 2
   attack: 2
   defend: 1

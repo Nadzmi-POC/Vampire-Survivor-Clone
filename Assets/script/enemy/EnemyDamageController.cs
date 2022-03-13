@@ -15,7 +15,13 @@ public class EnemyDamageController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        HPController hpController = collision.GetComponent<HPController>();
-        hpController?.Damage(stat.attack);
+        Player player = collision.GetComponent<Player>();
+
+        if (player != null)
+        {
+            Debug.Log(JsonUtility.ToJson(player, true));
+            HPController hpController = collision.GetComponent<HPController>();
+            hpController?.Damage(stat.attack);
+        }
     }
 }
