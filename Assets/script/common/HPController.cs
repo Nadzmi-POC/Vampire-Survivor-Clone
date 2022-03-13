@@ -9,6 +9,7 @@ public class HPController : MonoBehaviour
     public event Action<OnHealedEvent> OnHealed = delegate { };
     public event Action OnKilled = delegate { };
 
+    private float baseDefend = 0f;
     private float currentHp, maxHp;
 
     public void Heal(float value)
@@ -21,10 +22,14 @@ public class HPController : MonoBehaviour
 
     public void Damage(float value)
     {
-        this.currentHp = ((this.currentHp - value) <= 0)
+        float damagedValue = value - this.baseDefend;
+
+        Debug.Log("damagedValue: " + damagedValue);
+
+        this.currentHp = ((damagedValue > 0) && (this.currentHp - damagedValue) <= 0)
             ? 0
-            : (this.currentHp - value);
-        OnDamaged.Invoke(new OnDamagedEvent(value, this.currentHp, this.maxHp));
+            : (this.currentHp - damagedValue);
+        OnDamaged.Invoke(new OnDamagedEvent(damagedValue, this.currentHp, this.maxHp));
 
         if (this.currentHp <= 0)
         {
@@ -45,6 +50,11 @@ public class HPController : MonoBehaviour
         this.currentHp = (this.currentHp >= this.maxHp)
             ? this.maxHp
             : this.currentHp;
+    }
+
+    public void SetBaseDefend(float value)
+    {
+        this.baseDefend = value;
     }
 
     public void Kill()

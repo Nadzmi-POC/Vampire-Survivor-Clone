@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
 
         hpController.SetMaxHp(stat.hp);
         hpController.SetHp(stat.hp);
+        hpController.SetBaseDefend(this.stat.defend);
     }
 
     private void OnEnable()
