@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class EnemyDamageController : MonoBehaviour
 {
-    private Stat stat;
+    private float baseAttack = 1f;
 
-    private void Start()
+    public void SetBaseAttack(float value)
     {
-        EnemyController enemy = GetComponentInParent<EnemyController>();
-
-        stat = enemy?.stat;
+        this.baseAttack = value;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        HPController hpController = collision.GetComponent<HPController>();
-        hpController?.Damage(stat.attack);
+        EntityController controller = collision.GetComponent<EntityController>();
+
+        if (controller?.type == EntityType.player)
+        {
+            HPController hpController = controller?.hpController;
+            hpController.Damage(baseAttack);
+        }
     }
 }
