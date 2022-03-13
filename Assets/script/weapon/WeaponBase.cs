@@ -7,6 +7,8 @@ public abstract class WeaponBase : MonoBehaviour
     public bool isActive = true;
     public WeaponStat stat;
 
+    private float baseAttack = 1f;
+
     private void Start()
     {
         if (stat == null)
@@ -19,8 +21,13 @@ public abstract class WeaponBase : MonoBehaviour
     {
         if (isActive)
         {
-            OnHit(collision);
+            OnHit(collision, this.baseAttack);
         }
+    }
+
+    public void SetBaseAttack(float value)
+    {
+        this.baseAttack = value;
     }
 
     public virtual void Activate()
@@ -33,5 +40,5 @@ public abstract class WeaponBase : MonoBehaviour
         isActive = false;
     }
 
-    protected abstract void OnHit(Collider2D collision);
+    protected abstract void OnHit(Collider2D collision, float baseAttack);
 }

@@ -258,6 +258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 9567ca4be4ea260419f1d8bba61b4abf, type: 2}
   hpController: {fileID: 7952549629265210624}
+  type: 0
+  weaponController: {fileID: 7952549629195359142}
 --- !u!114 &7952549629694501296
 MonoBehaviour:
   m_ObjectHideFlags: 0

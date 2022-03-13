@@ -6,7 +6,7 @@ public class EntityController : MonoBehaviour
 {
     public Stat stat;
     public HPController hpController;
-    public EntityType entityType;
+    public EntityType type;
 
     public Stat GetStat() => stat;
 
@@ -24,6 +24,8 @@ public class EntityController : MonoBehaviour
         hpController.SetMaxHp(stat.hp);
         hpController.SetHp(stat.hp);
         hpController.SetBaseDefend(this.stat.defend);
+
+        this.Initialization();
     }
 
     private void OnEnable()
@@ -34,6 +36,11 @@ public class EntityController : MonoBehaviour
     private void OnDisable()
     {
         hpController.OnKilled -= Killed;
+    }
+
+    protected virtual void Initialization()
+    {
+        // setup any extra initialization process
     }
 
     protected virtual void Killed()

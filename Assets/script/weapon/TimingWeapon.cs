@@ -37,9 +37,9 @@ public class TimingWeapon : WeaponBase
         spriteRenderer.enabled = isActive;
     }
 
-    protected override void OnHit(Collider2D collision)
+    protected override void OnHit(Collider2D collision, float baseAttack)
     {
         HPController hpController = collision.GetComponent<HPController>();
-        hpController?.Damage(stat.damage);
+        hpController?.Damage(baseAttack + this.stat.damage);
     }
 }
