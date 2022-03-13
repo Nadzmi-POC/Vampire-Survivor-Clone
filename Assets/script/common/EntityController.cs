@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class EntityController : MonoBehaviour
 {
     public Stat stat;
     public HPController hpController;
+    public EntityType type;
 
     public Stat GetStat() => stat;
 
@@ -22,6 +23,9 @@ public class Player : MonoBehaviour
 
         hpController.SetMaxHp(stat.hp);
         hpController.SetHp(stat.hp);
+        hpController.SetBaseDefend(this.stat.defend);
+
+        this.Initialization();
     }
 
     private void OnEnable()
@@ -34,9 +38,13 @@ public class Player : MonoBehaviour
         hpController.OnKilled -= Killed;
     }
 
-    void Killed()
+    protected virtual void Initialization()
     {
-        Debug.Log("Player died");
+        // setup any extra initialization process
+    }
+
+    protected virtual void Killed()
+    {
         Destroy(gameObject);
     }
 }

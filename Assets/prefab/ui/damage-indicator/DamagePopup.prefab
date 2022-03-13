@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7834592347243281500}
   - component: {fileID: 7834592347243281501}
-  - component: {fileID: 7834592347243281474}
+  - component: {fileID: 4650342141818723754}
   m_Layer: 0
   m_Name: DamagePopup
   m_TagString: Untagged
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6798540678371340366}
-  duration: 0.5
---- !u!95 &7834592347243281474
+  animator: {fileID: 4650342141818723754}
+--- !u!95 &4650342141818723754
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ Animator:
   m_GameObject: {fileID: 7834592347243281475}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad41a27cdab8d8a46b3a7c0d58b29cc2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 21e66fc68bcd058428aeec6a38972a5f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

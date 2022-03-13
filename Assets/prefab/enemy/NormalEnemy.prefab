@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4587178130344555830}
   - component: {fileID: 4587178130344555819}
   - component: {fileID: 4587178130344555817}
+  - component: {fileID: 643531314}
   m_Layer: 0
   m_Name: NormalEnemy
   m_TagString: Enemy
@@ -153,19 +154,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4587178130344555831}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4587178130344555817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: cc60b4e85de1a6348a795897f6bf7191, type: 2}
   hpController: {fileID: 312006308820115549}
+  type: 1
+  damageController: {fileID: 4587178130572206263}
+--- !u!114 &643531314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587178130344555831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a892ee9e3cb164e8adf67534527aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4587178130344555817}
 --- !u!1 &4587178131763499435
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +289,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295971497659957334, guid: e8f674e649299b942bd562c384fb38a6, type: 3}
   m_PrefabInstance: {fileID: 3338531823301943524}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4587178130572206263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1295971497659957331, guid: e8f674e649299b942bd562c384fb38a6, type: 3}
+  m_PrefabInstance: {fileID: 3338531823301943524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e0649b5eefda14081a6f154aaac24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &312006308820115549 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3026596060955443385, guid: e8f674e649299b942bd562c384fb38a6, type: 3}
