@@ -24,8 +24,6 @@ public class HPController : MonoBehaviour
     {
         float damagedValue = value - this.baseDefend;
 
-        Debug.Log("damagedValue: " + damagedValue);
-
         this.currentHp = ((damagedValue > 0) && (this.currentHp - damagedValue) <= 0)
             ? 0
             : (this.currentHp - damagedValue);

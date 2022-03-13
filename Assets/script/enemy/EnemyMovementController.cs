@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
 {
-    public Enemy enemy;
+    public EnemyController enemy;
 
     private Transform player;
     private Stat stat;

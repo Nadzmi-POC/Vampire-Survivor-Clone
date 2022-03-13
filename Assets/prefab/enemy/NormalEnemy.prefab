@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: cc60b4e85de1a6348a795897f6bf7191, type: 2}
   hpController: {fileID: 312006308820115549}
+  entityType: 1
 --- !u!114 &643531314
 MonoBehaviour:
   m_ObjectHideFlags: 0

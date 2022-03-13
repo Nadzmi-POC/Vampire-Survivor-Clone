@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class Enemy : MonoBehaviour
+public class EntityController : MonoBehaviour
 {
     public Stat stat;
     public HPController hpController;
+    public EntityType entityType;
 
     public Stat GetStat() => stat;
 
@@ -36,9 +36,8 @@ public class Enemy : MonoBehaviour
         hpController.OnKilled -= Killed;
     }
 
-    void Killed()
+    protected virtual void Killed()
     {
-        Debug.Log("Enemy died");
         Destroy(gameObject);
     }
 }

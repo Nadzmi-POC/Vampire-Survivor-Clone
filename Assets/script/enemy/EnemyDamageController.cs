@@ -8,7 +8,7 @@ public class EnemyDamageController : MonoBehaviour
 
     private void Start()
     {
-        Enemy enemy = GetComponentInParent<Enemy>();
+        EnemyController enemy = GetComponentInParent<EnemyController>();
 
         stat = enemy?.stat;
     }

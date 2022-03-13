@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    private Player player;
+    private PlayerController player;
     private new Rigidbody2D rigidbody;
 
     private Stat stat;
@@ -12,7 +12,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Start()
     {
-        player = GetComponent<Player>();
+        player = GetComponent<PlayerController>();
         rigidbody = GetComponent<Rigidbody2D>();
 
         // TODO: validation
