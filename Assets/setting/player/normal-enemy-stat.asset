@@ -16,3 +16,4 @@ MonoBehaviour:
   moveSpeed: 2
   attack: 2
   defend: 1
+  xp: 20

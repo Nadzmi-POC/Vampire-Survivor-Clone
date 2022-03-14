@@ -9,4 +9,5 @@ public class Stat : ScriptableObject
     public float moveSpeed = 5f;
     public float attack = 1f;
     public float defend = 1f;
+    public int xp = 0;
 }
