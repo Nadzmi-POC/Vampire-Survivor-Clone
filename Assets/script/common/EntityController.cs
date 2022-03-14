@@ -21,10 +21,6 @@ public class EntityController : MonoBehaviour
             LogHelper.ShowErrorLog(this.name, "Property 'hpController' must have a value.");
         }
 
-        hpController.SetMaxHp(stat.hp);
-        hpController.SetHp(stat.hp);
-        hpController.SetBaseDefend(this.stat.defend);
-
         this.Initialization();
     }
 
@@ -40,7 +36,9 @@ public class EntityController : MonoBehaviour
 
     protected virtual void Initialization()
     {
-        // setup any extra initialization process
+        hpController.SetMaxHp(stat.hp);
+        hpController.SetHp(stat.hp);
+        hpController.SetBaseDefend(this.stat.defend);
     }
 
     protected virtual void Killed()
