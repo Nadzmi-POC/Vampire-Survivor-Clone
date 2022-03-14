@@ -12,11 +12,6 @@ public class PlayerXpController : MonoBehaviour
     private int xp = 0;
     private int xpTreshold = 100;
 
-    private void Start()
-    {
-        OnXpChanged?.Invoke(new OnXpChanged(xp, xpTreshold));
-    }
-
     private void OnEnable()
     {
         EnemyController.OnEnemyKilled += ReceiveXp;
