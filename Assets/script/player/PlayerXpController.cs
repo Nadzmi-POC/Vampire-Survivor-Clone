@@ -25,12 +25,12 @@ public class PlayerXpController : MonoBehaviour
     public void ReceiveXp(OnEnemyKilled value)
     {
         xp += value.xp;
-        OnXpChanged?.Invoke(new OnXpChanged(xp, xpTreshold));
-
         if (xp >= xpTreshold)
         {
             LevelUp();
         }
+
+        OnXpChanged?.Invoke(new OnXpChanged(xp, xpTreshold));
     }
 
     public void LevelUp()
