@@ -4,10 +4,12 @@ using UnityEngine;
 
 public struct OnXpChanged
 {
-    public float xp;
+    public int currentXp;
+    public int xpTreshold;
 
-    public OnXpChanged(int value)
+    public OnXpChanged(int currentXp, int xpTreshold)
     {
-        this.xp = value;
+        this.currentXp = currentXp;
+        this.xpTreshold = xpTreshold;
     }
 }

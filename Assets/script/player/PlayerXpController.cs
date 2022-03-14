@@ -5,12 +5,17 @@ using System;
 
 public class PlayerXpController : MonoBehaviour
 {
-    public static event Action<OnXpChanged> OnExpChanged;
+    public static event Action<OnXpChanged> OnXpChanged;
     public static event Action<OnLevelUp> OnLevelUp;
 
     private int level = 1;
     private int xp = 0;
     private int xpTreshold = 100;
+
+    private void Start()
+    {
+        OnXpChanged?.Invoke(new OnXpChanged(xp, xpTreshold));
+    }
 
     private void OnEnable()
     {
@@ -25,7 +30,7 @@ public class PlayerXpController : MonoBehaviour
     public void ReceiveXp(OnEnemyKilled value)
     {
         xp += value.xp;
-        OnExpChanged?.Invoke(new OnXpChanged(value.xp));
+        OnXpChanged?.Invoke(new OnXpChanged(xp, xpTreshold));
 
         if (xp >= xpTreshold)
         {
