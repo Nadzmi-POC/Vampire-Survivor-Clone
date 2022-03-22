@@ -8,54 +8,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           lfs: true
+
       # Cache
-      - uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+      - name: Cache
+        uses: actions/cache@v3
+
       # Test
-      - name: Run tests
+      - name: Unity - Test runner
         uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-  # buildWindows64:
-  #   needs: runTest
-  #   name: Build Windows 64
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     # Checkout
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v2
-  #       with:
-  #         lfs: true
-  #     # Cache
-  #     - uses: actions/cache@v2
-  #       with:
-  #         path: Library
-  #         key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-  #         restore-keys: |
-  #           Library-
-  #     # Start build
-  #     - name: Build project
-  #       uses: game-ci/unity-builder@v2
-  #       env:
-  #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-  #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-  #       with:
-  #         targetPlatform: StandaloneWindows64
-  #     # Set build output
-  #     - name: Set build output
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: Build
-  #         path: build
+  buildWindows64:
+    needs: runTest
+    name: Build Windows 64
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      # Cache
+      - name: Cache
+        uses: actions/cache@v3
+
+      # Start build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64
+
+      # Set build output
+      - name: Set build output
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build
+          path: build
