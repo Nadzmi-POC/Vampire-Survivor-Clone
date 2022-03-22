@@ -7,7 +7,7 @@ public class HPBarController : MonoBehaviour
 {
     public HPController hpController;
 
-    private Vector3 hpBar;
+    private Vector2 hpBar;
 
     private void Start()
     {
@@ -44,14 +44,10 @@ public class HPBarController : MonoBehaviour
     void Damaged(OnDamagedEvent eventVal)
     {
         this.SetHp(eventVal.curValue, eventVal.maxValue);
-        // TODO: show text animation for damaged based on eventVal.value
-        Debug.Log("Damaged: " + eventVal.value);
     }
 
     void Healed(OnHealedEvent eventVal)
     {
         this.SetHp(eventVal.curValue, eventVal.maxValue);
-        // TODO: show text animation for healed based on eventVal.value
-        Debug.Log("Healed: " + eventVal.value);
     }
 }
