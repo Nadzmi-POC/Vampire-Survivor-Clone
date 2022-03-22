@@ -30,10 +30,10 @@ jobs:
       # test
       - name: Start Test
         uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        # with:
+        #   githubToken: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: Test results (${{ matrix.testMode }})
