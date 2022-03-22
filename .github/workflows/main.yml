@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   runTest:
-    name: Build Test
+    name: Run Test
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -16,30 +16,17 @@ jobs:
           - PlayMode
     steps:
       # checkout
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-      - name: Restore LFS cache
-        uses: actions/cache@v2
-        id: lfs-cache
         with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-      - name: Restore Library cache
-        uses: actions/cache@v2
+          lfs: true
+      # cache
+      - uses: actions/cache@v2
         with:
           path: Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-test-project-
             Library-
-
       # test
       - name: Start Test
         uses: game-ci/unity-test-runner@v2
