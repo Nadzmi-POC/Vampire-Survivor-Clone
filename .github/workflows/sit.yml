@@ -1,0 +1,71 @@
+name: SIT Build
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      # Cache
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-Library-VSC-Windows64
+          restore-keys: |
+            Library-
+
+      # Test
+      - name: Unity - Test runner
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: test
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      # Cache
+      - name: Cache
+        uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-VSC-Windows64
+          restore-keys: |
+            Library-
+
+      # Start build
+      - name: Build project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64
+
+      # Set build output
+      - name: Set build output
+        uses: actions/upload-artifact@v3
+        with:
+          name: vsc
+          path: build
