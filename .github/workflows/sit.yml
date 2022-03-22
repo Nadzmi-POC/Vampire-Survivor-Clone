@@ -1,9 +1,9 @@
-name: Staging Build
+name: SIT Build
 
 on:
-  push:
+  pull_request:
     branches:
-      - 'release/**'
+      - develop
 
 jobs:
   test:
