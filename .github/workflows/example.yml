@@ -1,6 +1,6 @@
 name: GameCI Template 🎮
 
-on: push
+on: workflow_dispatch # may use pull_request
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
