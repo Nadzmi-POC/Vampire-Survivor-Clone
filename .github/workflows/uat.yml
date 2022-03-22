@@ -3,8 +3,8 @@ name: Windows 64 Build
 on: [push, pull_request]
 
 jobs:
-  runTest:
-    name: Run Test
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -16,6 +16,11 @@ jobs:
       # Cache
       - name: Cache
         uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
 
       # Test
       - name: Unity - Test runner
@@ -25,9 +30,9 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-  buildWindows64:
-    needs: runTest
-    name: Build Windows 64
+  build:
+    needs: test
+    name: Build
     runs-on: ubuntu-latest
     steps:
       # Checkout
