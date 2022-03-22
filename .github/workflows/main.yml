@@ -1,4 +1,4 @@
-name: WebGL Build 😎
+name: Windows 64 Build 😎
 
 on: [push, pull_request]
 
