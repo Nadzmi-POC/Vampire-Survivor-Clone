@@ -62,7 +62,7 @@ jobs:
 
       # Set build output
       - name: Set build output
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
-          name: Build
+          name: vsc
           path: build
