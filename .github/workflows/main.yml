@@ -4,29 +4,29 @@ on: [push, pull_request]
 
 jobs:
   runTest:
-    name: Run Test
-    runs-on: ubuntu-latest
-    steps:
-      # Checkout
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          lfs: true
+    # name: Run Test
+    # runs-on: ubuntu-latest
+    # steps:
+    #   # Checkout
+    #   - name: Checkout
+    #     uses: actions/checkout@v3
+    #     with:
+    #       lfs: true
 
-      # Cache
-      - name: Cache
-        uses: actions/cache@v3
+    #   # Cache
+    #   - name: Cache
+    #     uses: actions/cache@v3
 
-      # Test
-      - name: Unity - Test runner
-        uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+    #   # Test
+    #   - name: Unity - Test runner
+    #     uses: game-ci/unity-test-runner@v2
+    #     env:
+    #       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    #     with:
+    #       githubToken: ${{ secrets.GITHUB_TOKEN }}
 
   buildWindows64:
-    needs: runTest
+    # needs: runTest
     name: Build Windows 64
     runs-on: ubuntu-latest
     steps:
