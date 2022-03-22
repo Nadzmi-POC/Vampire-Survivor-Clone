@@ -9,7 +9,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        targetPlatform: StandaloneWindows64
+        targetPlatform:
+          - StandaloneWindows64
         testMode:
           - EditMode
           - PlayMode
