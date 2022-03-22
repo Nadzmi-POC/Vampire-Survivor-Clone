@@ -1,9 +1,6 @@
-name: UAT Build
+name: PROD Deployment
 
-on:
-  pull_request:
-    branches:
-      - develop
+on: workflow_dispatch
 
 jobs:
   test:
