@@ -1,4 +1,4 @@
-name: Acquire activation file
+name: Get Unity License (Manual)
 on: workflow_dispatch
 jobs:
   activation:
