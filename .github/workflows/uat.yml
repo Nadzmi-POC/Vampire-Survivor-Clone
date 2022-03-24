@@ -1,7 +1,10 @@
-name: UAT Build
+name: UAT
 
 on:
   push:
+    branches:
+      - develop
+  pull_request:
     branches:
       - develop
 
