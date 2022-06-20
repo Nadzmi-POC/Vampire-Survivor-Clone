@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
         OnGameOver?.Invoke(new OnGameOver(isWinning));
         OnPause?.Invoke(new OnPause(EntityType.player));
         OnPause?.Invoke(new OnPause(EntityType.enemy));
+
+        Debug.Log("Game Over: " + this.isWinning);
     }
 
     public void PlayerDied(OnPlayerDied value) {
