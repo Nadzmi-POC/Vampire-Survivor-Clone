@@ -59,13 +59,13 @@ public class EntityController : MonoBehaviour
 
     protected virtual void PauseEntity(OnPause value) {
         if(this.type == value.type) {
-            gameObject.SetActive(false);
+            hpController.enabled = false;
         }
     }
 
     protected virtual void ResumeEntity(OnResume value) {
         if(this.type == value.type) {
-            gameObject.SetActive(true);
+            hpController.enabled = true;
         }
     }
 }

@@ -20,12 +20,6 @@ public class GameController : MonoBehaviour
         EntityController.OnPlayerDied -= PlayerDied;
     }
 
-    private void Update() {
-        if (isWinning) {
-            TriggerGameOver(isWinning);
-        }
-    }
-
     public void TriggerGameOver(bool isWinning) {
         this.isWinning = isWinning;
 
