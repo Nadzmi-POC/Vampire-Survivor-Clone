@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameOverPopupController : MonoBehaviour
 {
     public Canvas uiCanvas;
+    public Text txtGameOver;
 
     private void OnEnable()
     {
@@ -23,5 +24,11 @@ public class GameOverPopupController : MonoBehaviour
 
     public void ShowGameOver(OnGameOver value) {
         uiCanvas.enabled = true;
+
+        if(value.isWinning) {
+            txtGameOver.text = "You win!";
+        } else {
+            txtGameOver.text = "You lose!";
+        }
     }
 }

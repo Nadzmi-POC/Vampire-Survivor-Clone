@@ -59,13 +59,27 @@ public class EntityController : MonoBehaviour
 
     protected virtual void PauseEntity(OnPause value) {
         if(this.type == value.type) {
-            hpController.enabled = false;
+            switch(value.type) {
+                case EntityType.player:
+                GetComponent<PlayerMovementController>().enabled = false;
+                    break;
+                case EntityType.enemy:
+                GetComponent<EnemyMovementController>().enabled = false;
+                    break;
+            }
         }
     }
 
     protected virtual void ResumeEntity(OnResume value) {
         if(this.type == value.type) {
-            hpController.enabled = true;
+            switch(value.type) {
+                case EntityType.player:
+                GetComponent<PlayerMovementController>().enabled = true;
+                    break;
+                case EntityType.enemy:
+                GetComponent<EnemyMovementController>().enabled = true;
+                    break;
+            }
         }
     }
 }
