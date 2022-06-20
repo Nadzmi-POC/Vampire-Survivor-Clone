@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EntityController : MonoBehaviour
 {
+    public static event Action<OnPlayerDied> OnPlayerDied;
+
     public Stat stat;
     public HPController hpController;
     public EntityType type;
@@ -27,11 +30,15 @@ public class EntityController : MonoBehaviour
     private void OnEnable()
     {
         hpController.OnKilled += Killed;
+        GameController.OnPause += PauseEntity;
+        GameController.OnResume += ResumeEntity;
     }
 
     private void OnDisable()
     {
         hpController.OnKilled -= Killed;
+        GameController.OnPause -= PauseEntity;
+        GameController.OnResume -= ResumeEntity;
     }
 
     protected virtual void Initialization()
@@ -43,6 +50,22 @@ public class EntityController : MonoBehaviour
 
     protected virtual void Killed()
     {
+        if(this.type == EntityType.player) {
+            OnPlayerDied?.Invoke(new OnPlayerDied());
+        }
+
         Destroy(gameObject);
+    }
+
+    protected virtual void PauseEntity(OnPause value) {
+        if(this.type == value.type) {
+            gameObject.SetActive(false);
+        }
+    }
+
+    protected virtual void ResumeEntity(OnResume value) {
+        if(this.type == value.type) {
+            gameObject.SetActive(true);
+        }
     }
 }
